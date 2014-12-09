@@ -1,0 +1,30 @@
+%div{class:"jumbotron"}
+  %div{class:"container text-center"}
+    %a{ href: "https://github.com/yuchan/sinatra-boilerplate", class: "btn btn-info" }
+      View on Github
+
+#books
+  %form#addBook{:action => "#"}
+    %div
+      %label{:for => "coverImage"} CoverImage:
+      %input#coverImage{:type => "file"}/
+      %label{:for => "title"} Title:
+      %input#title{:type => "text"}/
+      %label{:for => "author"} Author:
+      %input#author{:type => "text"}/
+      %label{:for => "releaseDate"} Release date:
+      %input#releaseDate{:type => "text"}/
+      %label{:for => "keywords"} Keywords:
+      %input#keywords{:type => "text"}/
+      %button#add Add
+
+%script#bookTemplate{:type => "text/template"}
+  <img src="<%= coverImage %>"/>
+  <ul>
+  <li><%= title %></li>
+  <li><%= author %></li>
+  <li><%= releaseDate %></li>
+  <li><%= keywords %></li>
+  </ul>
+  
+  <button class="delete">Delete</button>
