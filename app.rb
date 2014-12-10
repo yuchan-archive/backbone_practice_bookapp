@@ -41,11 +41,24 @@ class Api < Grape::API
   end
 
   post "/books" do
-    puts params[:releasedate]
+    ary = Array.new
+    m = params[:keywords]
+    m.each{|k|
+      k.each{|j,v|
+        ary.push(v)
+      }
+    }
+    
     @book = Books.new(:title => params[:title],
+<<<<<<< HEAD
     :author => params[:author],
     :releasedate => params[:releasedate],
     :keywords => keywordsArray(params[:keywords]))
+=======
+                      :author => params[:author],
+                      :releasedate => params[:releasedate],
+                      :keywords => ary)
+>>>>>>> convert keywords into array.
     @book.save
     @book
   end
