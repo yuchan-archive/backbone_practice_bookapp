@@ -1,13 +1,16 @@
 language: ruby
 rvm:
-- 2.1.5
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
 deploy:
   provider: heroku
   api_key:
-    secure: cHioI6HfZgP5JZxcOnMkr8f2t6pmnT0yIhcXy1H1qQqMmmWYeSzDVcHCAEHtc+9qMe5JKuRcjayYbTf6rNgxOvDSWQa+El7jkDEnhfQORkbsuGOjea4P2u0wl/En7vJ0aekelwPOxRQzp5ny1HTh/TX0LON7/miMVniJV1wB+YU=
-  app: arcane-dawn-1089
+    secure: co3Qe8rhT31tGB+HyWklyGHnd/7pWUV5dMipJv17T+wbdGaxVBVbD5+d8RmzMyd66BhBxvMeSQsGeCI5+TWkAsjXKgQtkmWwW4ViapcpLA8+a1GgZqq9LmlsO/nlU8UpzOCQJk/M1B5Kv6AlQENAIWv12km6JbnPYzjqY6k7oIg=
+  app: rocky-basin-8540
   run:
     - "rake db:migrate"
     - restart
   on:
-    repo: yuchan/sinatra-boilerplate
+    repo: yuchan-edu/backbone_practice_bookapp
