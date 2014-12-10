@@ -8,8 +8,6 @@ gem 'sinatra-activerecord'
 
 # api
 gem 'grape'
-gem 'rabl', :require => 'rabl'
-gem 'oj'
 
 # frontend stacks
 gem 'bootstrap-sass'

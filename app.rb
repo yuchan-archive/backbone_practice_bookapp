@@ -13,12 +13,16 @@ class Api < Grape::API
   
   get "/books" do
     @books = Books.all
-    @books.to_json
+    @books
   end
   
   get "/books/:id" do
-    @book = Books.find(params[:id])
-    @book.to_json
+    begin
+      @book = Books.find params[:id]
+    rescue ActiveRecord::RecordNotFound => e
+      @book = {error: "no books was found."}
+    end
+    @book
   end
 
   post "/books" do

@@ -55,10 +55,7 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
-    oj (2.11.1)
     pg (0.17.1)
-    rabl (0.11.5)
-      activesupport (>= 2.3.14)
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -137,9 +134,7 @@ DEPENDENCIES
   grape
   haml
   minitest
-  oj
   pg
-  rabl
   rake
   sass
   shotgun
