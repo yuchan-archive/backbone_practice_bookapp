@@ -1,5 +1,7 @@
 %div{class:"jumbotron"}
   %div{class:"container text-center"}
+    %h1
+      BookApp for Backbonejs tutorial
     %a{ href: "https://github.com/yuchan/sinatra-boilerplate", class: "btn btn-info" }
       View on Github
 
@@ -12,8 +14,8 @@
       %input#title{:type => "text"}/
       %label{:for => "author"} Author:
       %input#author{:type => "text"}/
-      %label{:for => "releaseDate"} Release date:
-      %input#releaseDate{:type => "text"}/
+      %label{:for => "releasdate"} Release date:
+      %input#releasedate{:type => "text"}/
       %label{:for => "keywords"} Keywords:
       %input#keywords{:type => "text"}/
       %button#add Add
@@ -23,8 +25,8 @@
   <ul>
   <li><%= title %></li>
   <li><%= author %></li>
-  <li><%= releaseDate %></li>
-  <li><%= keywords %></li>
+  <li><%= $.format.date( new Date( releasedate ), 'MMMM yyyy' ) %></li>
+  <li><% _.each( keywords, function( keyobj ) {%> <%= keyobj.keyword %><% } ); %></li>
   </ul>
   
   <button class="delete">Delete</button>

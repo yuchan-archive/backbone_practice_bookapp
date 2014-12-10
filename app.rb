@@ -17,30 +17,41 @@ class Api < Grape::API
   end
   
   get "/books/:id" do
+<<<<<<< HEAD
     begin
       @book = Books.find params[:id]
     rescue ActiveRecord::RecordNotFound => e
       @book = {error: "no books was found."}
     end
+=======
+    @book = Books.find(params[:id])
+>>>>>>> 4f54726... complete tutorial.
     @book
   end
 
   post "/books" do
+    puts params[:releasedate]
     @book = Books.new(:title => params[:title],
                       :author => params[:author],
                       :releasedate => params[:releasedate],
                       :keywords => params[:keywords])
     @book.save
+    @book
   end
   
-  put "/books" do
+  put "/books/:id" do
     @book = Books.find(params[:id])
-    @book.save
+    @book.update(:title => params[:title],
+                 :author => params[:author],
+                 :releasedate => params[:releasedate],
+                 :keywords => params[:keywords])
+    @book
   end
   
   delete "/books/:id" do
     @book = Books.find(params[:id])
-    @book.delete
+    @book.destroy
+    {id: params[:id]}
   end
 end
 
