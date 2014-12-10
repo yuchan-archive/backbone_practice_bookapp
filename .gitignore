@@ -1,8 +1,15 @@
-.bundle
-bundle
-.sass-cache
-bower_components
+#tmp
 .bundle
 .ruby-version
+.sass-cache
+
+#module cache
+bundle
+bower_components
 node_modules
+
+#db
 db/*.sqlite3
+
+#coverall
+coverage

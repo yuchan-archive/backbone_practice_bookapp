@@ -29,6 +29,7 @@ group :test, :development do
   gem 'rake'
   gem 'shotgun'
   gem 'tux'
+  gem 'coveralls', require: false
 end
 
 # production db
