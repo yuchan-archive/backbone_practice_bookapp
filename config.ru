@@ -1,7 +1,14 @@
 require "./app"
 
-configure :development do
+enable :sessions
+
+configure :development, :test do
   register Sinatra::Reloader
+  set :session_secret, '*&(^B234'
+end
+
+configure :production do
+  set :session_secret, ENV['SECRET_KEY']
 end
 
 map '/assets' do
@@ -26,6 +33,4 @@ map '/assets' do
   run App.sprockets
 end
 
-map "/" do
-  run App
-end
+run Rack::Cascade.new [Api, App]

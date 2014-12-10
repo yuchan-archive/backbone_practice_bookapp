@@ -98,4 +98,11 @@ $ ->
     }
   ]
   new app.LibraryView(books)
+  
+  jQuery.get('/api/books', (data, textStatus, jqXHR) ->
+      console.log 'Post response:'
+      console.dir data
+      console.log textStatus
+      console.dir jqXHR
+  )
   return
