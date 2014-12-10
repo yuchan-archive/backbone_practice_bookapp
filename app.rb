@@ -41,6 +41,7 @@ class Api < Grape::API
   end
 
   post "/books" do
+    puts params[:releasedate]
     @book = Books.new(:title => params[:title],
     :author => params[:author],
     :releasedate => params[:releasedate],
