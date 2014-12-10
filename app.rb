@@ -30,11 +30,18 @@ class Api < Grape::API
   end
 
   post "/books" do
-    puts params[:releasedate]
+    ary = Array.new
+    m = params[:keywords]
+    m.each{|k|
+      k.each{|j,v|
+        ary.push(v)
+      }
+    }
+    
     @book = Books.new(:title => params[:title],
                       :author => params[:author],
                       :releasedate => params[:releasedate],
-                      :keywords => params[:keywords])
+                      :keywords => ary)
     @book.save
     @book
   end
