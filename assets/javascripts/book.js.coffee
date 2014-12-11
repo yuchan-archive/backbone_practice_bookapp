@@ -66,8 +66,9 @@ app.LibraryView = Backbone.View.extend(
           if $(el).val() != ''
             if el.id is 'keywords'
               formData[ el.id ] = []
-              _.each( $(el).val().split(' '), (keyword) ->
-                formData[el.id].push {'keywords': keyword} )
+              if $(el).val().length > 0
+                _.each( $(el).val().split(' '), (keyword) ->
+                  formData[el.id].push(keyword))
             else if el.id is 'releasedate'
               formData[ el.id ] = $('#releasedate').datepicker('getDate').toUTCString()
             else

@@ -17,26 +17,22 @@ class Api < Grape::API
   end
   
   get "/books/:id" do
-<<<<<<< HEAD
     begin
       @book = Books.find params[:id]
     rescue ActiveRecord::RecordNotFound => e
       @book = {error: "no books was found."}
     end
-=======
-    @book = Books.find(params[:id])
->>>>>>> 4f54726... complete tutorial.
     @book
   end
 
   post "/books" do
     ary = Array.new
     m = params[:keywords]
-    m.each{|k|
-      k.each{|j,v|
-        ary.push(v)
+    if m != "None" && m.length > 0
+      m.each{|k|
+        ary.push(k)
       }
-    }
+    end
     
     @book = Books.new(:title => params[:title],
                       :author => params[:author],
