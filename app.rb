@@ -26,13 +26,14 @@ class Api < Grape::API
   end
 
   post "/books" do
-    ary = Array.new
+    ary = "{"
     m = params[:keywords]
     if m != "None" && m.length > 0
       m.each{|k|
-        ary.push(k)
+        ary += k + ","
       }
     end
+    ary += "}"
     
     @book = Books.new(:title => params[:title],
                       :author => params[:author],
