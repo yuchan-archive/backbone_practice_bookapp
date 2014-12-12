@@ -9,6 +9,7 @@ end
 
 configure :production do
   set :session_secret, ENV['SECRET_KEY']
+  ActiveRecord::Base.logger.level = 1
 end
 
 map '/assets' do

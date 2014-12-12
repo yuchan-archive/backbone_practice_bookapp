@@ -13,6 +13,19 @@ class Api < Grape::API
   format :json
   prefix :api
   
+  helpers do
+    def keywordsArray(param)
+      ary = []
+      m = param
+      if m != "None" && m.length > 0
+        m.each{|k|
+          ary.push(k)
+        }
+      end
+        ary
+    end
+  end
+
   get "/books" do
     @books = Books.all
     @books
@@ -28,18 +41,10 @@ class Api < Grape::API
   end
 
   post "/books" do
-    ary = []
-    m = params[:keywords]
-    if m != "None" && m.length > 0
-      m.each{|k|
-        ary.push(k)
-      }
-    end
-    
     @book = Books.new(:title => params[:title],
     :author => params[:author],
     :releasedate => params[:releasedate],
-    :keywords => ary)
+    :keywords => keywordsArray(params[:keywords]))
     @book.save
     @book
   end
@@ -49,7 +54,7 @@ class Api < Grape::API
     @book.update(:title => params[:title],
     :author => params[:author],
     :releasedate => params[:releasedate],
-    :keywords => params[:keywords])
+    :keywords => keywordsArray(params[:keywords]))
     @book
   end
   
