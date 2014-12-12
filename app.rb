@@ -4,7 +4,9 @@ Bundler.require
 include Sprockets::Helpers
 
 class Books < ActiveRecord::Base
-  serialize :keywords
+  if ENV["RACK_ENV"] != "production"
+    serialize :keywords      
+  end
 end
 
 class Api < Grape::API
@@ -26,19 +28,18 @@ class Api < Grape::API
   end
 
   post "/books" do
-    ary = "{"
+    ary = []
     m = params[:keywords]
     if m != "None" && m.length > 0
       m.each{|k|
-        ary += k + ","
+        ary.push(k)
       }
     end
-    ary += "}"
     
     @book = Books.new(:title => params[:title],
-                      :author => params[:author],
-                      :releasedate => params[:releasedate],
-                      :keywords => ary)
+    :author => params[:author],
+    :releasedate => params[:releasedate],
+    :keywords => ary)
     @book.save
     @book
   end
@@ -46,9 +47,9 @@ class Api < Grape::API
   put "/books/:id" do
     @book = Books.find(params[:id])
     @book.update(:title => params[:title],
-                 :author => params[:author],
-                 :releasedate => params[:releasedate],
-                 :keywords => params[:keywords])
+    :author => params[:author],
+    :releasedate => params[:releasedate],
+    :keywords => params[:keywords])
     @book
   end
   
