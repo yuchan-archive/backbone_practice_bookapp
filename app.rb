@@ -50,15 +50,9 @@ class Api < Grape::API
     }
     
     @book = Books.new(:title => params[:title],
-<<<<<<< HEAD
     :author => params[:author],
     :releasedate => params[:releasedate],
     :keywords => keywordsArray(params[:keywords]))
-=======
-                      :author => params[:author],
-                      :releasedate => params[:releasedate],
-                      :keywords => ary)
->>>>>>> convert keywords into array.
     @book.save
     @book
   end
