@@ -5,6 +5,8 @@ Book app example(backbonejs with sinatra)
 [![Code Climate](https://codeclimate.com/github/yuchan-edu/backbone_practice_bookapp/badges/gpa.svg)](https://codeclimate.com/github/yuchan-edu/backbone_practice_bookapp)
 [![Coverage Status](https://img.shields.io/coveralls/yuchan-edu/backbone_practice_bookapp.svg)](https://coveralls.io/r/yuchan-edu/backbone_practice_bookapp)
 
+dogfooding [this](https://github.com/yuchan/sinatra-boilerplate).
+
 heroku deployment
 -----------------
 
